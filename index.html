@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aclimor | מעטפת שירות שנתית לצ'ילרים</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b162a;
+      --panel: #0f213f;
+      --accent: #3dd6c4;
+      --accent-2: #5ab4ff;
+      --muted: #c6d4e9;
+      --text: #f6fbff;
+      --shadow: 0 20px 60px rgba(8, 20, 45, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Assistant', 'Heebo', system-ui, -apple-system, sans-serif;
+      background: radial-gradient(circle at 20% 20%, rgba(61, 214, 196, 0.09), transparent 35%),
+                  radial-gradient(circle at 80% 0%, rgba(90, 180, 255, 0.12), transparent 32%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 32px 22px 72px;
+    }
+
+    header {
+      position: relative;
+      background: linear-gradient(135deg, rgba(15, 33, 63, 0.92), rgba(26, 60, 110, 0.92));
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 24px;
+      padding: 32px 28px 36px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    header::after, header::before {
+      content: '';
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(61, 214, 196, 0.35), transparent 55%);
+      filter: blur(24px);
+      opacity: 0.6;
+    }
+
+    header::before {
+      top: -80px;
+      left: -120px;
+    }
+
+    header::after {
+      bottom: -100px;
+      right: -70px;
+      background: radial-gradient(circle, rgba(90, 180, 255, 0.35), transparent 55%);
+    }
+
+    .top-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 22px;
+      flex-wrap: wrap;
+    }
+
+    .logo-mark {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #3dd6c4, #5ab4ff);
+      display: grid;
+      place-items: center;
+      color: #0b162a;
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing: 0.8px;
+      box-shadow: 0 10px 30px rgba(61, 214, 196, 0.35);
+    }
+
+    .identity h1 {
+      margin: 0;
+      font-size: 28px;
+      letter-spacing: -0.5px;
+    }
+
+    .identity p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+      align-items: center;
+    }
+
+    .hero-text h2 {
+      margin: 0 0 12px;
+      font-size: 32px;
+      line-height: 1.25;
+    }
+
+    .tagline {
+      margin: 0 0 16px;
+      font-size: 18px;
+      color: var(--muted);
+    }
+
+    .points {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 10px 14px;
+      margin: 14px 0 18px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      font-weight: 600;
+    }
+
+    .chip span {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #3dd6c4, #5ab4ff);
+      box-shadow: 0 0 0 4px rgba(61, 214, 196, 0.15);
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    .btn {
+      border: none;
+      border-radius: 12px;
+      padding: 12px 16px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      color: #0b162a;
+      background: linear-gradient(135deg, #3dd6c4, #5ab4ff);
+      box-shadow: var(--shadow);
+      text-decoration: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 40px rgba(61, 214, 196, 0.35);
+    }
+
+    .btn.secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: none;
+    }
+
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .section {
+      margin-top: 28px;
+      padding: 24px;
+      background: rgba(15, 33, 63, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .section h3 {
+      margin: 0 0 16px;
+      font-size: 22px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+    }
+
+    .card {
+      padding: 16px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card strong {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .accent-dot {
+      position: absolute;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(61, 214, 196, 0.35), transparent 60%);
+      top: 8px;
+      left: 12px;
+      filter: blur(6px);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .stat {
+      padding: 14px 16px;
+      background: linear-gradient(135deg, rgba(61, 214, 196, 0.08), rgba(90, 180, 255, 0.08));
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      text-align: center;
+    }
+
+    .stat .value {
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    ul {
+      margin: 0;
+      padding-inline-start: 18px;
+      color: var(--muted);
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .badge {
+      padding: 6px 10px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    footer {
+      margin-top: 24px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    footer strong {
+      color: var(--text);
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+        color: #111111;
+      }
+
+      .btn.print-hide,
+      #download-pdf {
+        display: none !important;
+      }
+
+      .page {
+        background: #ffffff;
+        color: #111111;
+      }
+
+      header,
+      .section,
+      .card,
+      .stat {
+        background: #ffffff !important;
+        border: 1px solid #cccccc !important;
+        box-shadow: none !important;
+      }
+
+      .logo-mark {
+        color: #0b162a;
+        box-shadow: none;
+      }
+
+      .identity h1,
+      .identity p,
+      h2,
+      h3,
+      strong,
+      p,
+      .badge,
+      .stat .value,
+      .stat div,
+      .meta,
+      .badge-row {
+        color: #111111 !important;
+      }
+
+      .badge,
+      .chip {
+        border-color: #dddddd !important;
+        background: #f6f6f6 !important;
+        color: #111111 !important;
+      }
+
+      a {
+        color: #111111 !important;
+        text-decoration: none;
+      }
+
+      .page {
+        padding: 0 6mm 6mm;
+      }
+
+      @page {
+        margin: 10mm;
+        size: A4 portrait;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page" id="brochure">
+    <header>
+      <div class="top-bar">
+        <div class="logo-mark" aria-hidden="true">AC</div>
+        <div class="identity">
+          <h1>Aclimor | פתרונות קירור מדויקים</h1>
+          <p>מעטפת שירות שנתית לצ'ילרים — מותאם לחברות ניהול, בנייני משרדים, קניונים, בתי מלון ומגדלי מגורים.</p>
+        </div>
+      </div>
+
+      <div class="hero">
+        <div class="hero-text">
+          <h2>שקט ניהולי לאורך כל השנה: זמינות 24/7, תחזוקת מנע, ודיווחי בריאות מערכת בזמן אמת.</h2>
+          <p class="tagline">מנוע צ'ילרים שמספק אפס הפתעות: ניטור אנליטי, טיפול מים מלא, החלפת מתכלים בזמן, וצוות מומחה שמכיר את הנכס לעומק.</p>
+          <div class="points">
+            <div class="chip"><span></span>זמן תגובה SLA מוגדר לחירום</div>
+            <div class="chip"><span></span>דוחות שקיפות חודשיים + בקרה אנרגטית</div>
+            <div class="chip"><span></span>שיטות תחזוקת OEM והמלצות יצרן</div>
+            <div class="chip"><span></span>אופטימיזציה לחיסכון חשמל ומים</div>
+          </div>
+          <div class="cta-row">
+            <a class="btn" href="tel:+972506031399">שיחת ייעוץ מיידית</a>
+            <a class="btn secondary" href="mailto:Aclimor@outlook.co.il?subject=%D7%91%D7%A7%D7%A9%D7%AA%20%D7%94%D7%A6%D7%A2%D7%94%20-%20%D7%A9%D7%99%D7%A8%D7%95%D7%AA%20%D7%A6%D7%99%D7%9C%D7%A8%D7%99%D7%9D">שליחת מפרט מותאם</a>
+            <button id="download-pdf" class="btn print-hide" type="button">הורד PDF איכותי</button>
+          </div>
+          <div class="meta">
+            <div><strong>טלפון:</strong> 050-603-1399</div>
+            <div><strong>אימייל:</strong> Aclimor@outlook.co.il</div>
+            <div><strong>אתר:</strong> <a href="https://aclimor-cooling.netlify.app" style="color: var(--accent)">aclimor-cooling.netlify.app</a></div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="stats">
+            <div class="stat">
+              <div class="value">99.5%</div>
+              <div>זמינות מערכת ממוצעת לאורך השנה</div>
+            </div>
+            <div class="stat">
+              <div class="value">&lt; 2 ש'</div>
+              <div>זמן הגעה קריטי בשעות פעילות</div>
+            </div>
+            <div class="stat">
+              <div class="value">12%+</div>
+              <div>חיסכון אנרגטי טיפוסי אחרי כיוונון</div>
+            </div>
+            <div class="stat">
+              <div class="value">360°</div>
+              <div>כיסוי: מכאני, חשמלי, מים ובקרה</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="section">
+      <h3>מה כלול במעטפת השנתית</h3>
+      <div class="grid">
+        <div class="card">
+          <div class="accent-dot"></div>
+          <strong>תחזוקת מנע רבעונית</strong>
+          <p>ניקוי מחליפי חום, הדקים חשמליים, בדיקת מדחסים, שמנים ופילטרים לפי הוראות יצרן, כיול בקרי לחץ וטמפרטורה.</p>
+        </div>
+        <div class="card">
+          <div class="accent-dot"></div>
+          <strong>טיפול מים מלא</strong>
+          <p>בדיקות מוליכות/PH, מינון חומרים מעכבי קורוזיה ואבנית, דגימות מעבדה לפי צורך, שטיפות קווים וקררים.</p>
+        </div>
+        <div class="card">
+          <div class="accent-dot"></div>
+          <strong>בקרת אנרגיה ויעילות</strong>
+          <p>אנליזה של COP, עקומות עומס, כיול setpoints, איזון משאבות, תזמון מתחלפים למניעת שחיקה, המלצות לחיסכון.</p>
+        </div>
+        <div class="card">
+          <div class="accent-dot"></div>
+          <strong>זמינות וחירום 24/7</strong>
+          <p>מוקד טכני, צוות שטח, זמינות חלפים קריטיים (מאוררים, חיישנים, קונטקטורים), גיבוי ניידים לפי הצורך.</p>
+        </div>
+        <div class="card">
+          <div class="accent-dot"></div>
+          <strong>דוחות ותיעוד</strong>
+          <p>דוח חודשי עם תמונות, מגמות, חריגות ופעולות, פגישת רבעון ליישור כיוונים, תיעוד מלא לפיקוח וחיסכון.</p>
+        </div>
+        <div class="card">
+          <div class="accent-dot"></div>
+          <strong>שדרוגים והחלפת מתכלים</strong>
+          <p>החלפת פילטרים, רפידות, גומיות, שמנים, חיישנים וממסרים; תכנון שדרוגי בקרה ו-remote monitoring.</p>
+        </div>
+      </div>
+      <div class="badge-row">
+        <div class="badge">מותאם לצ'ילרים בורגיים/בוכנתיים/סקרו</div>
+        <div class="badge">סטנדרט OEM + הנחיות יצרנים מובילים</div>
+        <div class="badge">כיסוי לבתי מלון, קניונים, קמפוסים ומגדלים</div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h3>למה Aclimor לחברות ניהול</h3>
+      <div class="grid">
+        <div class="card">
+          <strong>אחריות ניהולית מלאה</strong>
+          <p>אתם מקבלים מנהל חוזה יחיד שמכיר את הנכס, מנהל אסקלציות ומתאם מול דיירים ובעלי מקצוע משיקים.</p>
+        </div>
+        <div class="card">
+          <strong>שליטה ויזואלית</strong>
+          <p>לוחות מחוונים פשוטים: סטטוס צ'ילרים, התראות חכמות, המלצות חיסכון – בלי להעמיס עליכם מידע טכני.</p>
+        </div>
+        <div class="card">
+          <strong>אמינות וחזרות</strong>
+          <p>פרוטוקולי בדיקה חוזרים, Checklists חתומים, תמונות לפני/אחרי, תיעוד ענן למעקב איכות.</p>
+        </div>
+        <div class="card">
+          <strong>חיסכון מדיד</strong>
+          <p>שילוב של כיווני setpoint, איזון הידראולי וטיפול מים המקטינים צריכת אנרגיה ומאריכים חיי מדחס.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h3>תהליך עבודה מובנה</h3>
+      <div class="grid">
+        <div class="card">
+          <strong>1. מיפוי נכס</strong>
+          <p>סריקת ציוד, מצב מדחסים, משאבות, מגדלי קירור, בקרות, מערכות טיפול מים והזנות חירום.</p>
+        </div>
+        <div class="card">
+          <strong>2. תכנית תחזוקה שנתית</strong>
+          <p>לו"ז רבעוני/חודשי, הגדרת SLA, רשימת חלפים זמינים, נהלי חירום ותסריטי כשל.</p>
+        </div>
+        <div class="card">
+          <strong>3. יישום וניטור</strong>
+          <p>ביצוע עבודות בשעות נוחות לנכס, בקרה אנליטית, ניטור התראות, תיאום עם אבטחה ודיירים.</p>
+        </div>
+        <div class="card">
+          <strong>4. מדידה ושיפור</strong>
+          <p>דוחות מגמות, בדיקת KPI (זמינות, צריכת אנרגיה, איכות מים), והמלצות שדרוג ממוקדות.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h3>התמחויות בולטות בצ'ילרים</h3>
+      <div class="grid">
+        <div class="card">
+          <strong>מדחסים ובקרה</strong>
+          <p>כיול בקרי לחץ/טמפ', בדיקות סולנואידים, שסתומי התפשטות, Inverter drives ואיזון עומסים.</p>
+        </div>
+        <div class="card">
+          <strong>מערכות מים</strong>
+          <p>טיפול נגד קורוזיה ואבנית, בדיקות זרימות, ניקוזי חירום, איזון משאבות ראשיות וסירקולציה.</p>
+        </div>
+        <div class="card">
+          <strong>מגדלי קירור</strong>
+          <p>ניקוי ומניעת ליגיונלה, בקרה על מאווררים ותדרים משתנים, אופטימיזציית טמפ' עיבוי.</p>
+        </div>
+        <div class="card">
+          <strong>חשמל ובטיחות</strong>
+          <p>בדיקות בידוד, הידוקים תרמיים, ממסרי פחת, הגנות זרם, מערכות גיבוי ותרחישי השבתה מבוקרת.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h3>מודל שירות והצעת ערך</h3>
+      <div class="grid">
+        <div class="card">
+          <strong>ריטיינר חודשי שקוף</strong>
+          <p>כולל ביקורים מתוכננים, ניטור, דוחות, והנחות על שעות חירום וחלפים. אין הפתעות.</p>
+        </div>
+        <div class="card">
+          <strong>זמינות חלפים</strong>
+          <p>מאוררים, חיישני לחץ/טמפ', פילטרים, שמנים, קונטקטורים – מלאי קריטי זמין לקיצור זמני השבתה.</p>
+        </div>
+        <div class="card">
+          <strong>שירותים נלווים</strong>
+          <p>הסמכת צוותי אחזקה אצלכם, בניית נהלי חרום, ליווי פיקוח פרויקטים והחלפות צ'ילרים.</p>
+        </div>
+      </div>
+      <div class="badge-row">
+        <div class="badge">SLA חירום מוגדר ומדיד</div>
+        <div class="badge">דוחות איכותיים עם תמונות ומדדים</div>
+        <div class="badge">התאמה לבקרה קיימת או הצעת שדרוג</div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h3>בואו נקבע שיחת התאמה לנכס שלכם</h3>
+      <p style="margin: 0 0 12px; color: var(--muted);">אני זמין לשיחת עומק כדי להכיר את מאפייני הצ'ילרים, מגדלי הקירור והדיירים, ולהגיש לכם הצעת שירות מדויקת עם SLA ויעדים אנרגטיים ברורים.</p>
+      <div class="cta-row">
+        <a class="btn" href="tel:+972506031399">דברו איתי עכשיו</a>
+        <a class="btn secondary" href="mailto:Aclimor@outlook.co.il">שליחת מייל מהיר</a>
+        <button id="download-pdf-bottom" class="btn print-hide" type="button">ייצוא מהיר ל-PDF</button>
+      </div>
+      <div class="badge-row" style="margin-top: 14px;">
+        <div class="badge">טלפון: 050-603-1399</div>
+        <div class="badge">אימייל: Aclimor@outlook.co.il</div>
+        <div class="badge">אתר: aclimor-cooling.netlify.app</div>
+      </div>
+    </section>
+
+    <footer>
+      <strong>Aclimor</strong> — שירותי צ'ילרים חכמים לחברות ניהול. כל זכויות שמורות.
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <script>
+    const downloadButtons = [
+      document.getElementById('download-pdf'),
+      document.getElementById('download-pdf-bottom')
+    ].filter(Boolean);
+
+    const brochure = document.getElementById('brochure');
+
+    const downloadPdf = async (btn) => {
+      if (!window.jspdf || !html2canvas || !brochure) {
+        window.print();
+        return;
+      }
+
+      const originalText = btn.textContent;
+      btn.textContent = 'מייצא...';
+      btn.disabled = true;
+
+      try {
+        const canvas = await html2canvas(brochure, {
+          scale: 2,
+          useCORS: true,
+          windowWidth: brochure.scrollWidth,
+          windowHeight: brochure.scrollHeight
+        });
+        const imgData = canvas.toDataURL('image/png');
+        const pdf = new window.jspdf.jsPDF({
+          orientation: 'portrait',
+          unit: 'px',
+          format: [canvas.width, canvas.height]
+        });
+        pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
+        pdf.save('Aclimor-chillers-brochure.pdf');
+      } catch (err) {
+        console.error(err);
+        window.print();
+      } finally {
+        btn.textContent = originalText;
+        btn.disabled = false;
+      }
+    };
+
+    downloadButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        downloadPdf(btn);
+      });
+    });
+  </script>
+</body>
+</html>
